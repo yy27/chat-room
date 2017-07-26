@@ -30,12 +30,12 @@ a {
   top: 50%;
 }
 .chat-box{
-  width: 1200px;
-  height: 800px;
-  margin-left: -600px;
-  margin-top: -400px;
+  width: 1000px;
+  height: 600px;
+  margin-left: -500px;
+  margin-top: -300px;
   background-color: rgba(0,0,0,0.4);
-  border-radius: 10px;
+  border-radius: 5px;
   color: #fff;
   display: flex;
   justify-items:center;
