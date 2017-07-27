@@ -1,11 +1,1 @@
-npm install -g express
-npm init
-npm install express --save
-npm install express-generator -g
-express mychat
-set DEBUG=mychat & npm start
-npm install serve-favicon
-npm install morgan
-npm install cookie-parser
-npm install body-parser
-npm install jade
+# chat-room
