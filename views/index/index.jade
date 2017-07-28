@@ -1,87 +1,33 @@
 extends ../layout
-
+block head
+  script(type='text/javascript',src="/socket.io/socket.io.js")
+  script(type='text/javascript',src="https://code.jquery.com/jquery-1.10.2.min.js")
+  script(type='text/javascript',src="javascripts/client.js")
 block content
   .body-bg
     .chat-wrap
       .chat-box
         .chat-friend
           .user-top
-            .user-img
-              img(src="/images/user.jpg")
-            p 闫艳
-            i.web_wechat_add
           #search_bar.search_bar
             i.web_wechat_search
             input.frm_search(placeholder='搜索')
           .friend-g
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
-            .f-wrap
-              .user-img
-                img(src="/images/user.jpg")
-              p 闫艳
         .chat-room
           p.title 聊天室
           .chat-log
-            .log-left
-              .user-img
-                img(src="/images/user.jpg")
-              .chat-content
-                .content 你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！
-            .log-left.my-msg
-              .chat-content
-                .content 你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！你好啊！
-              .user-img
-                img(src="/images/user.jpg")
           .chat-msg
             .send-tool
               a.emot
               a.screencut
               a.file
             .send-text
-              textarea.content
+              textarea.content#chat_msg
             .send
               span.text 按下Ctrl+Enter换行
-              span.submit 发送
+              span.submit#submit 发送
+  .window-user
+    .window-box
+      .w-content
+        p.title 请输入您的聊天昵称
+        input.i-text#name(type="text",placeholder="聊天昵称")

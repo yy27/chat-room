@@ -196,9 +196,6 @@ a {
 .chat-log::-webkit-scrollbar-track     {
     background:rgba(0,0,0,0.1);
 }
-.chat-log::-webkit-scrollbar-track-piece {
-    background:url(http://www.lyblog.net/wp/wp-content/themes/mine/img/stripes_tiny_08.png);
-}
 .chat-log::-webkit-scrollbar-thumb{
     background:rgba(0,0,0,0.3);
     border-radius:4px;
@@ -250,6 +247,7 @@ a {
   color: #000;
 }
 .log-left .chat-content .content{
+  min-height: 15px;
   padding: 10px;
   background-color: rgba(255,255,255,0.4);
   border-radius: 5px;
@@ -334,9 +332,6 @@ a {
 .send-text .content::-webkit-scrollbar-track     {
     background:rgba(0,0,0,0.1);
 }
-.send-text .content::-webkit-scrollbar-track-piece {
-    background:url(http://www.lyblog.net/wp/wp-content/themes/mine/img/stripes_tiny_08.png);
-}
 .send-text .content::-webkit-scrollbar-thumb{
     background:rgba(0,0,0,0.3);
     border-radius:4px;
@@ -347,6 +342,41 @@ a {
 .send-text .content::-webkit-scrollbar-resizer  {
     background:#FF0BEE;
 }
-.chat-msg 
-.chat-msg 
-.chat-msg 
+.window-user{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.window-box{
+  position: fixed;
+  left: 50%;
+  top: 50%;
+}
+.w-content{
+  width: 600px;
+  height: 150px;
+  background-color: #fff;
+  margin-left: -300px;
+  margin-top: -75px;
+  padding: 20px;
+}
+.w-content .title{
+  padding: 10px 0;
+  font-size: 20px;
+  text-align: center;
+}
+.w-content .i-text{
+  width: 100%;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
+  text-align: center;
+}
+.add-chat{
+  padding: 10px 0;
+  text-align: center;
+  color: #333;
+}
