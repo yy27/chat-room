@@ -4,6 +4,7 @@ block head
   script(type='text/javascript',src="https://code.jquery.com/jquery-1.10.2.min.js")
   script(type='text/javascript',src="javascripts/client.js")
 block content
+  .exit 退出聊天室
   .body-bg
     .chat-wrap
       .chat-box
@@ -13,6 +14,12 @@ block content
             i.web_wechat_search
             input.frm_search(placeholder='搜索')
           .friend-g
+            each user in users
+              .f-wrap
+                .user-img
+                  img(src= user.icon)
+                p= user.name
+
         .chat-room
           p.title 聊天室
           .chat-log

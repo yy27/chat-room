@@ -44,6 +44,10 @@ $(function(){
       return false;
     }
   });
+  $('.exit').click(function(){
+    socket.emit('disconnect',{'name':chatname});
+    alert('sss');
+  })
   socket.on('chat message',function(data){
     if(data.name == chatname){
       msg_right(data.msg,user_icon,data.name);
@@ -63,6 +67,9 @@ $(function(){
     var loginHtml = '<div class="add-chat">'+data.name+'加入聊天室</div>';
     app_html(loginHtml);
   });
+  // socket.on('disconnect',function(data){
+
+  // });
 });
 //不是本人发的消息，显示在左边
 function msg_left(message,img,chatName){
