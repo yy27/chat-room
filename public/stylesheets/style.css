@@ -164,6 +164,10 @@ a {
   padding: 20px;
   display: flex;
   border-bottom: 1px solid rgba(0,0,0,0.1);
+  cursor: pointer;
+}
+.over{
+  background-color: rgba(0,0,0,0.3);
 }
 .f-wrap .user-img{
   flex:1;

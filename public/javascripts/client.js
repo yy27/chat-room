@@ -3,6 +3,7 @@ $(function(){
   var send = $("#submit");
   var chatname = '';
   var user_icon = '/images/user.jpg';
+  $('#name').focus();
   //输入昵称 enter确定
   $('#name').keydown(function(){
     var _this = this;
@@ -15,8 +16,9 @@ $(function(){
             +'</div>'
             +'<p>'+chatname+'</p>';
         $('.user-top').prepend(user_top);
+        $('#chat_msg').focus();
         $('.window-user').hide();
-        socket.emit('login',{'name':$(_this).val(),'icon':user_icon});
+        socket.emit('login',{'sid':'','name':$(_this).val(),'icon':user_icon});
       }
     }
   });
@@ -47,7 +49,14 @@ $(function(){
   $('.exit').click(function(){
     socket.emit('disconnect',{'name':chatname});
     alert('sss');
-  })
+  });
+  $('.f-wrap').mouseover(function(){
+    $('.f-wrap').removeClass('over');
+    $(this).addClass('over');
+  });
+  $('.f-wrap').mouseout(function(){
+    $('.f-wrap').removeClass('over');
+  });
   socket.on('chat message',function(data){
     if(data.name == chatname){
       msg_right(data.msg,user_icon,data.name);
@@ -56,7 +65,7 @@ $(function(){
     }
   });
   socket.on('login',function(data){  
-    var user_group = '<div class="f-wrap">'
+    var user_group = '<div class="f-wrap '+data.sid+'">'
           +'<div class="user-img">'
           +'<img src="'+data.icon+'" />'
           +'</div>'
@@ -67,9 +76,11 @@ $(function(){
     var loginHtml = '<div class="add-chat">'+data.name+'加入聊天室</div>';
     app_html(loginHtml);
   });
-  // socket.on('disconnect',function(data){
-
-  // });
+  socket.on('exit',function(data){
+    $('.'+data.sid).remove();
+    var loginHtml = '<div class="add-chat">'+data.name+'退出聊天室</div>';
+    app_html(loginHtml);
+  });
 });
 //不是本人发的消息，显示在左边
 function msg_left(message,img,chatName){

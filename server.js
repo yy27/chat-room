@@ -8,6 +8,7 @@ io.on('connection',function(socket){
 	});
 	socket.on('login' , function(data){
 		user = new Users({
+			sid:socket.id,
 			name:data.name,
 			icon:data.icon
 		});
@@ -15,23 +16,27 @@ io.on('connection',function(socket){
 			if(err){
 				console.log('数据插入失败！');
 			} else {
+				data.sid = socket.id;
 				console.log('数据插入成功！');
+				io.emit('login' , data );
 			}
 		});
-		io.emit('login' , data );
+		
 	});
-	socket.on('disconnect', function(reason) {
-		console.log(socket.id);
-		// if(chatname != ''){
-			// console.log(data.name);
-			// Users.remove({name:data.name},function(err){
-			// 	if(err){
-			// 		console.log(data.name+'删除用户失败！');
-			// 	} else {
-			// 		console.log(data.name+'删除用户成功！');
-			// 	}
-			// })
-		// }
+	socket.on('disconnect', function() {
+		Users.findOne({sid:socket.id}).exec(function (err,user){
+			Users.remove({sid:socket.id},function(err){
+				if(err){
+					console.log('删除用户失败！');
+				} else {
+					console.log('删除用户成功！');
+					console.log(user);
+					io.emit('exit',{'sid':socket.id,'name':user.name});
+				}
+			});
+		});
+		
+
 	    
 	});
 })
