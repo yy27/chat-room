@@ -10,7 +10,8 @@ io.on('connection',function(socket){
 		user = new Users({
 			sid:socket.id,
 			name:data.name,
-			icon:data.icon
+			icon:data.icon,
+			color:data.color,
 		});
 		user.save(function (err){
 			if(err){
@@ -24,13 +25,13 @@ io.on('connection',function(socket){
 		
 	});
 	socket.on('disconnect', function() {
+		console.log(socket.id);
 		Users.findOne({sid:socket.id}).exec(function (err,user){
 			Users.remove({sid:socket.id},function(err){
 				if(err){
 					console.log('删除用户失败！');
 				} else {
 					console.log('删除用户成功！');
-					console.log(user);
 					io.emit('exit',{'sid':socket.id,'name':user.name});
 				}
 			});

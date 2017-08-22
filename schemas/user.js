@@ -5,6 +5,7 @@ var UsersSchema = new mongoose.Schema({
     sid: String,
     name: String,
     icon: String,
+    color: String,
     meta: { 
         createAt: {
             type: Date,

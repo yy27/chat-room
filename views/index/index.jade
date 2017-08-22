@@ -16,7 +16,7 @@ block content
             each user in users
               div(class='f-wrap '+user.sid)
                 .user-img
-                  img(src= user.icon)
+                  img(src= user.icon,style="background-color:"+user.color)
                 p= user.name
         .chat-room
           p.title 聊天室
