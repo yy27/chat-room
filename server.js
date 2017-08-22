@@ -24,17 +24,27 @@ io.on('connection',function(socket){
 		});
 		
 	});
+	socket.on('userlist',function(){
+		Users.find().exec(function(err,users){
+			io.emit('userlist',{'name':'看看行不行','userlist':users});
+		})
+	});
 	socket.on('disconnect', function() {
-		console.log(socket.id);
+		console.log(socket.id+'socket的的的');
 		Users.findOne({sid:socket.id}).exec(function (err,user){
-			Users.remove({sid:socket.id},function(err){
-				if(err){
-					console.log('删除用户失败！');
-				} else {
-					console.log('删除用户成功！');
-					io.emit('exit',{'sid':socket.id,'name':user.name});
-				}
-			});
+			if(err){
+				console.log('查询用户失败！'+user);
+			} else if(user != null){
+				Users.remove({sid:socket.id},function(err){
+					if(err){
+						console.log('删除用户失败！');
+					} else {
+						console.log('删除用户成功！'+user.name);
+						io.emit('exit',{'sid':socket.id,'name':user.name});
+					}
+				});
+			}
+			
 		});
 		
 
